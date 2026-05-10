@@ -1,3 +1,4 @@
+from pathlib import Path
 import pandas as pd
 import streamlit as st
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -10,7 +11,7 @@ st.set_page_config(
 )
 
 @st.cache_data
-def carregar_dados(caminho_csv: str) -> pd.DataFrame:
+def carregar_dados(caminho_csv):
     df = pd.read_csv(caminho_csv)
     df = df.dropna(subset=["name", "texto_recomendacao_limpo"]).copy()
     df["name"] = df["name"].astype(str).str.strip()
@@ -75,10 +76,15 @@ st.markdown(
     """
 )
 
-df = carregar_dados("restaurantes_app_10porcento.csv")
+BASE_DIR = Path(__file__).resolve().parent
+CSV_PATH = BASE_DIR / "restaurantes_app_10porcento.csv"
+
+df = carregar_dados(CSV_PATH)
+
 _, matriz_tfidf, indices = preparar_modelo(df)
 
-st.subheader("Selecione um restaurante de referência")
+st.subheader("Escolha um restaurante para receber recomendações semelhantes")
+st.caption("A recomendação é gerada com base em atributos descritivos dos restaurantes, usando TF-IDF e similaridade do cosseno.")
 
 nomes_restaurantes = sorted(df["name"].dropna().unique().tolist())
 
@@ -135,18 +141,10 @@ if st.button("Gerar recomendações"):
                     st.markdown(f"**{row['Restaurante']}**")
                     st.markdown(
                         f"""
-                        <div style="
-                            display: inline-block;
-                            padding: 4px 8px;
-                            border-radius: 999px;
-                            background-color: #ecfdf5;
-                            color: #065f46;
-                            font-size: 11px;
-                            font-weight: 700;
-                            margin-top: 2px;
-                            margin-bottom: 6px;
-                        ">
-                            Similaridade: {row['Similaridade']}
+                        <div style='font-size:12px; line-height:1.4; margin-top:4px;'>
+                            <div><strong>Categoria:</strong> {row['Categoria']}</div>
+                            <div><strong>Faixa de preço:</strong> {row['Faixa de preço']}</div>
+                            <div><strong>Estado:</strong> {row['Estado']}</div>
                         </div>
                         """,
                         unsafe_allow_html=True
