@@ -111,8 +111,6 @@ if st.button("Gerar recomendações"):
         top_n=top_n
     )
 
-    st.markdown(f"### Recomendações para: **{restaurante_escolhido}**")
-
     if recomendacoes.empty:
         st.warning("Não foi possível gerar recomendações para o restaurante selecionado.")
     else:
@@ -126,8 +124,6 @@ if st.button("Gerar recomendações"):
                 "similaridade": "Similaridade"
             }
         )
-
-        st.markdown("### Top recomendações encontradas")
 
         traducao_preco = {
             "cheapest": "Mais barato",
