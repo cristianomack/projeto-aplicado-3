@@ -1,5 +1,24 @@
 # Projeto Aplicado III — Sistema de Recomendação de Restaurantes
 
+## Visão geral
+
+Este repositório reúne os artefatos do **Projeto Aplicado III**, cujo objetivo foi desenvolver uma **prova de conceito de um sistema de recomendação de restaurantes** a partir da base pública **iFood Restaurants Data**.
+
+A solução foi construída com uma abordagem **baseada em conteúdo**, utilizando atributos descritivos dos restaurantes e técnicas de representação textual, vetorização com **TF-IDF** e cálculo de similaridade por **cosseno**.
+
+---
+
+## Links principais
+
+- **Documento final do projeto:** [`docs/PA3_Aula04_AplicandoConhecimento_10720249.pdf`](docs/PA3_Aula04_AplicandoConhecimento_10720249.pdf)
+- **Notebook principal:** [`notebooks/PA3_Notebook_Final_Recomendacao_Restaurantes.ipynb`](notebooks/PA3_Notebook_Final_Recomendacao_Restaurantes.ipynb)
+- **Aplicação da prova de conceito:** [mack-pa3.streamlit.app](https://mack-pa3.streamlit.app/)
+- **Vídeo de apresentação:** inserir link do vídeo no YouTube
+- **Vídeo da aplicação na comunidade:** inserir link do vídeo no YouTube
+- **Dataset utilizado:** [iFood Restaurants Data — Kaggle](https://www.kaggle.com/datasets/ricardotachinardi/ifood-restaurants-data)
+
+---
+
 ## 1. Apresentação
 
 **Título do Trabalho:**  
@@ -95,11 +114,11 @@ A comparação com o baseline indicou que o modelo principal apresentou maior fl
 ## 7. Estrutura do repositório
 
 ```text
-Projeto_Aplicado_III/
-├── README.md
+projeto-aplicado-3/
+├── app/
 ├── data/
 ├── docs/
 ├── notebooks/
 ├── scripts/
-├── figures/
-└── videos/
+├── videos/
+└── README.md
