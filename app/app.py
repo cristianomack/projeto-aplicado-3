@@ -128,12 +128,26 @@ if st.button("Gerar recomendações"):
         )
 
         st.markdown("### Top recomendações encontradas")
+
+        traducao_preco = {
+            "cheapest": "Mais barato",
+            "cheap": "Barato",
+            "moderate": "Moderado",
+            "expensive": "Caro",
+            "most_expensive": "Mais caro"
+        }
+
         st.markdown(f"### Recomendações para: **{restaurante_escolhido}**")
         st.caption(f"Quantidade de recomendações exibidas: {top_n}")
 
         colunas = st.columns(3)
 
         for i, (_, row) in enumerate(recomendacoes.iterrows()):
+            faixa_preco = traducao_preco.get(
+                str(row["Faixa de preço"]).lower(),
+                row["Faixa de preço"]
+            )
+
             with colunas[i % 3]:
                 with st.container(border=True):
                     st.markdown(
@@ -163,7 +177,7 @@ if st.button("Gerar recomendações"):
                             font-weight: 700;
                             margin-bottom: 8px;
                         ">
-                            Similaridade: {row['Similaridade']}
+                            Similaridade: {float(row['Similaridade']):.3f}
                         </div>
                         """,
                         unsafe_allow_html=True
@@ -172,8 +186,8 @@ if st.button("Gerar recomendações"):
                     st.markdown(
                         f"""
                         <div style='font-size:14px; line-height:1.5; color:#374151;'>
-                            <div><strong>Categoria:</strong> {row['Categoria']}</div>
-                            <div><strong>Faixa de preço:</strong> {row['Faixa de preço']}</div>
+                            <div><strong>Categoria:</strong> {str(row['Categoria']).capitalize()}</div>
+                            <div><strong>Faixa de preço:</strong> {faixa_preco}</div>
                             <div><strong>Estado:</strong> {str(row['Estado']).upper()}</div>
                         </div>
                         """,
