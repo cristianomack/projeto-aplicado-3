@@ -128,30 +128,57 @@ if st.button("Gerar recomendações"):
         )
 
         st.markdown("### Top recomendações encontradas")
-        st.markdown(
-            f"**Restaurante selecionado:** {restaurante_escolhido}  \n"
-            f"**Quantidade de recomendações:** {top_n}"
-        )
+        st.markdown(f"### Recomendações para: **{restaurante_escolhido}**")
+        st.caption(f"Quantidade de recomendações exibidas: {top_n}")
 
         colunas = st.columns(3)
 
         for i, (_, row) in enumerate(recomendacoes.iterrows()):
             with colunas[i % 3]:
                 with st.container(border=True):
-                    st.markdown(f"**{row['Restaurante']}**")
                     st.markdown(
                         f"""
-                        <div style='font-size:12px; line-height:1.4; margin-top:4px;'>
-                            <div><strong>Categoria:</strong> {row['Categoria']}</div>
-                            <div><strong>Faixa de preço:</strong> {row['Faixa de preço']}</div>
-                            <div><strong>Estado:</strong> {row['Estado']}</div>
+                        <div style="
+                            font-size: 18px;
+                            font-weight: 700;
+                            color: #111827;
+                            margin-bottom: 6px;
+                            line-height: 1.3;
+                        ">
+                            {row['Restaurante']}
                         </div>
                         """,
                         unsafe_allow_html=True
                     )
-                    st.markdown(f"<span style='font-size:12px;'>Categoria: {row['Categoria']}</span>", unsafe_allow_html=True)
-                    st.markdown(f"<span style='font-size:12px;'>Faixa de preço: {row['Faixa de preço']}</span>", unsafe_allow_html=True)
-                    st.markdown(f"<span style='font-size:12px;'>Estado: {row['Estado']}</span>", unsafe_allow_html=True)
+
+                    st.markdown(
+                        f"""
+                        <div style="
+                            display: inline-block;
+                            padding: 5px 10px;
+                            border-radius: 999px;
+                            background-color: #ecfdf5;
+                            color: #065f46;
+                            font-size: 13px;
+                            font-weight: 700;
+                            margin-bottom: 8px;
+                        ">
+                            Similaridade: {row['Similaridade']}
+                        </div>
+                        """,
+                        unsafe_allow_html=True
+                    )
+
+                    st.markdown(
+                        f"""
+                        <div style='font-size:14px; line-height:1.5; color:#374151;'>
+                            <div><strong>Categoria:</strong> {row['Categoria']}</div>
+                            <div><strong>Faixa de preço:</strong> {row['Faixa de preço']}</div>
+                            <div><strong>Estado:</strong> {str(row['Estado']).upper()}</div>
+                        </div>
+                        """,
+                        unsafe_allow_html=True
+                    )
 
 st.markdown("---")
 st.caption("Projeto Aplicado III — Prova de conceito de recomendação de restaurantes")
