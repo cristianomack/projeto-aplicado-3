@@ -24,7 +24,7 @@ Inserir link aqui
 Vídeo destinado a demonstrar a aplicação do projeto em contexto real, evidenciando a atividade extensionista e a interação com a comunidade.
 
 **Link do vídeo no YouTube:**  
-Inserir link aqui
+https://youtu.be/or935Y0YRTg
 
 ---
 
