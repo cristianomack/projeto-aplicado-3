@@ -15,16 +15,13 @@ Vídeo de apresentação geral do projeto, com duração aproximada de 5 minutos
 - conclusão e trabalhos futuros.
 
 **Link do vídeo no YouTube:**  
-Inserir link aqui
+https://youtu.be/or935Y0YRTg
 
 ---
 
 ## Vídeo da aplicação do projeto na comunidade
 
-Vídeo destinado a demonstrar a aplicação do projeto em contexto real, evidenciando a atividade extensionista e a interação com a comunidade.
-
-**Link do vídeo no YouTube:**  
-https://youtu.be/or935Y0YRTg
+Nosso vídeo não está disponível.
 
 ---
 
